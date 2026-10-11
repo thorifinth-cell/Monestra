@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Discover | Monestra</title>
+
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+    <link rel="stylesheet" href="Discover.css">
+
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="top-navbar">
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search games..."
+                autocomplete="off">
+        </div>
+
+        <div class="auth-buttons">
+            <button id="loginButton" class="login-button">LOG IN</button>
+            <button id="signupButton" class="signup-button">SIGN UP</button>
+        </div>
+
+        <div class="account-area">
+            <button id="notificationButton" class="nav-action"
+                aria-label="Notifications">
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button id="accountButton" class="nav-action profile-button"
+                aria-label="Profile">
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button id="dotsButton" class="nav-action dots-button"
+                aria-label="More options">
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+            <div id="dotsMenu" class="dots-menu">
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+                <button class="dots-menu-item" onclick="MonestraNavbar.logout()">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDE NAVBAR -->
+    <nav class="side-navbar">
+        <a href="../Monestra.html" class="side-nav-item" data-label="Home">
+            <ion-icon name="home-outline"></ion-icon>
+        </a>
+
+        <a href="Discover.html" class="side-nav-item active" data-label="Discover">
+            <ion-icon name="compass-outline"></ion-icon>
+        </a>
+
+        <a href="Community.html" class="side-nav-item" data-label="Community">
+            <ion-icon name="people-outline"></ion-icon>
+        </a>
+
+        <a href="Shop.html" class="side-nav-item" data-label="Shop">
+            <ion-icon name="bag-outline"></ion-icon>
+        </a>
+
+        <a href="My-Games.html" class="side-nav-item" data-label="My Games">
+            <ion-icon name="game-controller-outline"></ion-icon>
+        </a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="discover-page">
+
+        <!-- PAGE HEADER -->
+        <header class="discover-heading">
+            <div>
+                <span class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    YOUR NEXT ADVENTURE STARTS HERE
+                </span>
+
+                <h1>DISCOVER<span>.</span></h1>
+
+                <p>
+                    Find your next favorite game and explore new worlds.
+                </p>
+            </div>
+
+            <div class="heading-decoration" aria-hidden="true">
+                <ion-icon name="compass-outline"></ion-icon>
+            </div>
+        </header>
+
+        <!-- FEATURED GAME -->
+        <section class="featured-section">
+            <div class="featured-banner">
+                <div class="featured-art" aria-hidden="true">
+                    <div class="featured-ring ring-one"></div>
+                    <div class="featured-ring ring-two"></div>
+                    <div class="featured-orb"></div>
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                </div>
+
+                <div class="featured-content">
+                    <span class="featured-label">
+                        <ion-icon name="sparkles-outline"></ion-icon>
+                        FEATURED PREVIEW
+                    </span>
+
+                    <h2>Beyond<br>the Unknown</h2>
+
+                    <p>
+                        Step into a mysterious world filled with challenges,
+                        hidden paths and unexpected adventures.
+                    </p>
+
+                    <div class="featured-tags">
+                        <span>Adventure</span>
+                        <span>Exploration</span>
+                        <span>Demo</span>
+                    </div>
+
+                    <button class="featured-button" id="featuredExploreButton">
+                        Explore game
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+                </div>
+
+                <div class="featured-number">01</div>
+            </div>
+        </section>
+
+        <!-- GAME DISCOVERY -->
+        <section class="games-section" id="gamesSection">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">EXPLORE THE LIBRARY</span>
+                    <h2>Find your <span>game.</span></h2>
+                    <p>Browse different genres and discover something new.</p>
+                </div>
+
+                <div class="game-count">
+                    <span id="gameCount">0</span>
+                    <small>PREVIEWS</small>
+                </div>
+            </div>
+
+            <!-- CATEGORY FILTERS -->
+            <div class="discover-toolbar">
+                <div class="category-list" id="categoryList">
+                    <button class="category-button active" data-category="All">
+                        <ion-icon name="grid-outline"></ion-icon>
+                        All games
+                    </button>
+
+                    <button class="category-button" data-category="Horror">
+                        <ion-icon name="skull-outline"></ion-icon>
+                        Horror
+                    </button>
+
+                    <button class="category-button" data-category="Indie">
+                        <ion-icon name="color-wand-outline"></ion-icon>
+                        Indie
+                    </button>
+
+                    <button class="category-button" data-category="Adventure">
+                        <ion-icon name="compass-outline"></ion-icon>
+                        Adventure
+                    </button>
+
+                    <button class="category-button" data-category="Multiplayer">
+                        <ion-icon name="people-outline"></ion-icon>
+                        Multiplayer
+                    </button>
+
+                    <button class="category-button" data-category="Rhythm">
+                        <ion-icon name="musical-notes-outline"></ion-icon>
+                        Rhythm
+                    </button>
+                </div>
+
+                <label class="sort-box">
+                    <ion-icon name="swap-vertical-outline"></ion-icon>
+                    <select id="sortSelect" aria-label="Sort games">
+                        <option value="featured">Featured first</option>
+                        <option value="az">Name: A to Z</option>
+                        <option value="za">Name: Z to A</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- SEARCH STATUS -->
+            <div class="results-line">
+                <span id="resultsLabel">All game previews</span>
+                <button id="clearFiltersButton" class="clear-filters">
+                    Clear filters
+                </button>
+            </div>
+
+            <!-- GAME CARDS GENERATED BY JS -->
+            <div class="games-grid" id="discoverGamesGrid"></div>
+
+            <!-- EMPTY SEARCH RESULT -->
+            <div class="empty-state" id="emptyState" hidden>
+                <div class="empty-icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                </div>
+
+                <h3>No games found</h3>
+                <p>Try another search or choose a different category.</p>
+
+                <button id="resetSearchButton">
+                    Reset discovery
+                </button>
+            </div>
+        </section>
+
+        <!-- COMMUNITY DISCOVERY -->
+        <section class="community-discover">
+            <div class="community-discover-icon">
+                <ion-icon name="people-outline"></ion-icon>
+            </div>
+
+            <div class="community-discover-copy">
+                <span class="section-kicker">PLAY TOGETHER</span>
+                <h2>Your community adventure starts here.</h2>
+                <p>
+                    Discover community spaces and meet other players as
+                    Monestra's community features become available.
+                </p>
+            </div>
+
+            <a href="Community.html" class="community-link">
+                Visit community
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </a>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="discover-footer">
+            <span>MONESTRA</span>
+            <p>MADE IN TUNISIA <span>•</span> © 2026 MONESTRA</p>
+        </footer>
+
+    </main>
+
+    <!-- GAME DETAILS MODAL -->
+    <div class="game-modal" id="gameModal" aria-hidden="true">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+
+        <div class="modal-card" role="dialog" aria-modal="true"
+            aria-labelledby="modalGameTitle">
+
+            <button class="modal-close" id="closeModalButton"
+                aria-label="Close">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-art" id="modalArt">
+                <ion-icon id="modalGameIcon" name="game-controller-outline"></ion-icon>
+            </div>
+
+            <div class="modal-content">
+                <span class="modal-demo-label">GAME PREVIEW</span>
+                <h2 id="modalGameTitle">Game title</h2>
+                <span class="modal-category" id="modalGameCategory">Genre</span>
+                <p id="modalGameDescription"></p>
+
+                <div class="modal-actions">
+                    <button id="favoriteGameButton" class="modal-favorite">
+                        <ion-icon name="heart-outline"></ion-icon>
+                        Add to favorites
+                    </button>
+
+                    <button id="closeDetailsButton" class="modal-done">
+                        Done
+                    </button>
+                </div>
+
+                <p class="modal-note">
+                    These are frontend previews. Game downloads and real
+                    publishing will be connected later.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="discover-toast" id="discoverToast" role="status"></div>
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="Discover.js"></script>
+</body>
+</html>

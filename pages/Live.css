@@ -1,0 +1,1176 @@
+/* =========================================================
+   MONESTRA — LIVE
+   Kick / Twitch inspired
+========================================================= */
+
+:root {
+    --live-bg: #080b0f;
+    --live-panel: #10141a;
+    --live-panel-2: #151a21;
+
+    --live-blue: #7084A6;
+    --live-red: #ff4b5f;
+    --live-cream: #E8E6D9;
+
+    --live-muted: rgba(232, 230, 217, 0.46);
+    --live-border: rgba(232, 230, 217, 0.08);
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(112, 132, 166, 0.08),
+            transparent 38%
+        ),
+        var(--live-bg);
+
+    color: var(--live-cream);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.live-page {
+    position: fixed;
+
+    inset: 0;
+
+    padding:
+        86px
+        18px
+        88px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.live-layout {
+    width: min(1280px, calc(100vw - 36px));
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        330px;
+
+    gap: 14px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.live-main {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   STREAM PLAYER
+========================================================= */
+
+.stream-player {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--live-border);
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(112, 132, 166, 0.07),
+            transparent 48%
+        ),
+        #080a0d;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.38);
+}
+
+
+/* =========================================================
+   EMPTY PLAYER
+========================================================= */
+
+.stream-empty {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.stream-icon {
+    width: 76px;
+    height: 76px;
+
+    margin-bottom: 17px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(112, 132, 166, 0.12);
+
+    color: var(--live-blue);
+
+    animation:
+        livePulse 3s ease-in-out infinite;
+}
+
+.stream-icon ion-icon {
+    font-size: 35px;
+}
+
+.stream-live-label {
+    margin-bottom: 7px;
+
+    color: var(--live-red);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+.stream-empty h1 {
+    margin: 0 0 8px;
+
+    font-size: 21px;
+
+    letter-spacing: -0.035em;
+}
+
+.stream-empty p {
+    max-width: 390px;
+
+    margin: 0 0 18px;
+
+    color: var(--live-muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.start-live-button {
+    height: 40px;
+
+    padding:
+        0 17px;
+
+    border: 0;
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background:
+        var(--live-red);
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.start-live-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   PLAYER OVERLAY
+========================================================= */
+
+.player-top {
+    position: absolute;
+
+    top: 13px;
+    left: 13px;
+
+    height: 25px;
+
+    padding:
+        0 9px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+.player-live-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--live-red);
+}
+
+.player-bottom {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 55px;
+
+    padding:
+        0 13px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.7)
+        );
+}
+
+.player-control {
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.player-control:hover {
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+.player-progress {
+    flex: 1;
+
+    height: 3px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.16);
+}
+
+.player-progress span {
+    display: block;
+
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--live-red);
+}
+
+
+/* =========================================================
+   STREAM INFO
+========================================================= */
+
+.stream-info {
+    margin-top: 12px;
+
+    padding:
+        15px 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border:
+        1px solid var(--live-border);
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+.stream-info-main {
+    min-width: 0;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+}
+
+.stream-avatar {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(112, 132, 166, 0.18);
+
+    color: var(--live-blue);
+}
+
+.stream-avatar ion-icon {
+    font-size: 22px;
+}
+
+.stream-details {
+    min-width: 0;
+}
+
+.stream-category {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--live-red);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+.stream-details h2 {
+    margin: 0 0 5px;
+
+    overflow: hidden;
+
+    font-size: 15px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.stream-details p {
+    margin: 0 0 8px;
+
+    color: var(--live-muted);
+
+    font-size: 11px;
+}
+
+.stream-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.stream-tags span {
+    padding:
+        4px 7px;
+
+    border-radius: 6px;
+
+    background:
+        rgba(112, 132, 166, 0.10);
+
+    color: var(--live-muted);
+
+    font-size: 8px;
+}
+
+.stream-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.follow-button,
+.stream-action-button {
+    height: 36px;
+
+    border: 0;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+}
+
+.follow-button {
+    padding:
+        0 12px;
+
+    background:
+        var(--live-blue);
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.follow-button.following {
+    background:
+        rgba(112, 132, 166, 0.14);
+
+    color:
+        var(--live-blue);
+}
+
+.stream-action-button {
+    width: 36px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    color: var(--live-muted);
+}
+
+.stream-action-button:hover {
+    color: var(--live-cream);
+}
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+.live-categories {
+    margin-top: 18px;
+}
+
+.live-section-header {
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.live-section-header h2 {
+    margin: 0;
+
+    font-size: 14px;
+}
+
+.live-section-header span {
+    color: var(--live-muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.12em;
+}
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 9px;
+}
+
+.category-card {
+    min-height: 110px;
+
+    padding: 14px;
+
+    border:
+        1px solid var(--live-border);
+
+    border-radius: 13px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    color: var(--live-cream);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(112, 132, 166, 0.07);
+
+    border-color:
+        rgba(112, 132, 166, 0.22);
+}
+
+.category-card-icon {
+    width: 35px;
+    height: 35px;
+
+    margin-bottom: 10px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(112, 132, 166, 0.12);
+
+    color: var(--live-blue);
+}
+
+.category-card strong {
+    margin-bottom: 4px;
+
+    font-size: 11px;
+}
+
+.category-card span {
+    color: var(--live-muted);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   LIVE CHAT
+========================================================= */
+
+.live-chat-panel {
+    height: calc(100vh - 174px);
+
+    min-height: 440px;
+
+    display: flex;
+    flex-direction: column;
+
+    border:
+        1px solid var(--live-border);
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    background:
+        var(--live-panel);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.live-chat-header {
+    min-height: 59px;
+
+    padding:
+        0 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid var(--live-border);
+}
+
+.live-chat-header div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.live-chat-header span {
+    color: var(--live-muted);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+}
+
+.live-chat-header strong {
+    font-size: 12px;
+}
+
+.live-chat-header button {
+    width: 31px;
+    height: 31px;
+
+    border: 0;
+    border-radius: 8px;
+
+    display: grid;
+    place-items: center;
+
+    background: transparent;
+
+    color: var(--live-muted);
+
+    cursor: pointer;
+}
+
+.live-chat-header button:hover {
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: var(--live-cream);
+}
+
+
+/* =========================================================
+   CHAT
+========================================================= */
+
+.live-chat-messages {
+    flex: 1;
+
+    min-height: 0;
+
+    padding:
+        15px 12px;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(255, 255, 255, 0.09)
+        transparent;
+}
+
+.chat-empty {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.chat-empty-icon {
+    width: 54px;
+    height: 54px;
+
+    margin-bottom: 13px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 17px;
+
+    background:
+        rgba(112, 132, 166, 0.09);
+
+    color: var(--live-blue);
+}
+
+.chat-empty-icon ion-icon {
+    font-size: 24px;
+}
+
+.chat-empty h3 {
+    margin: 0 0 6px;
+
+    font-size: 13px;
+}
+
+.chat-empty p {
+    max-width: 190px;
+
+    margin: 0;
+
+    color: var(--live-muted);
+
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+
+/* FUTURE CHAT MESSAGE */
+
+.live-message {
+    margin-bottom: 9px;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+.live-message strong {
+    margin-right: 5px;
+
+    color: var(--live-blue);
+}
+
+.live-message span {
+    color:
+        rgba(232, 230, 217, 0.75);
+}
+
+
+/* =========================================================
+   CHAT COMPOSER
+========================================================= */
+
+.live-chat-composer {
+    min-height: 62px;
+
+    padding:
+        9px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    border-top:
+        1px solid var(--live-border);
+}
+
+.chat-input-wrapper {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 39px;
+
+    padding-left: 11px;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+}
+
+.chat-input-wrapper input {
+    min-width: 0;
+
+    flex: 1;
+
+    height: 100%;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--live-cream);
+
+    font-size: 10px;
+}
+
+.chat-input-wrapper input::placeholder {
+    color: var(--live-muted);
+}
+
+.chat-input-wrapper button {
+    width: 35px;
+    height: 35px;
+
+    border: 0;
+
+    display: grid;
+    place-items: center;
+
+    background: transparent;
+
+    color: var(--live-muted);
+
+    cursor: pointer;
+}
+
+.live-chat-send {
+    width: 39px;
+    height: 39px;
+
+    flex: 0 0 39px;
+
+    border: 0;
+    border-radius: 11px;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        var(--live-blue);
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.live-chat-send:hover {
+    filter: brightness(1.08);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.live-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: grid;
+    place-items: center;
+}
+
+.live-modal[hidden] {
+    display: none;
+}
+
+.live-modal-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.68);
+
+    backdrop-filter: blur(9px);
+}
+
+.live-modal-card {
+    position: relative;
+
+    width:
+        min(420px, calc(100vw - 30px));
+
+    padding:
+        38px 27px 27px;
+
+    border:
+        1px solid var(--live-border);
+
+    border-radius: 24px;
+
+    background:
+        rgba(16, 20, 25, 0.97);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.55);
+
+    text-align: center;
+}
+
+.close-live-modal {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: var(--live-muted);
+
+    cursor: pointer;
+}
+
+.live-modal-icon {
+    width: 65px;
+    height: 65px;
+
+    margin:
+        0 auto 17px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 75, 95, 0.10);
+
+    color: var(--live-red);
+}
+
+.live-modal-icon ion-icon {
+    font-size: 30px;
+}
+
+.live-modal-card h2 {
+    margin:
+        0 0 8px;
+
+    font-size: 20px;
+}
+
+.live-modal-card > p {
+    max-width: 320px;
+
+    margin:
+        0 auto 21px;
+
+    color: var(--live-muted);
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.modal-live-primary,
+.modal-live-secondary {
+    width: 100%;
+    height: 43px;
+
+    margin-top: 8px;
+
+    border: 0;
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.modal-live-primary {
+    background:
+        var(--live-red);
+
+    color: white;
+}
+
+.modal-live-secondary {
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: var(--live-cream);
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes livePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .live-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            280px;
+    }
+
+    .category-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .live-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .live-chat-panel {
+        height: 400px;
+
+        min-height: 400px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .live-page {
+        padding:
+            75px
+            7px
+            78px;
+    }
+
+    .live-layout {
+        width: 100%;
+    }
+
+    .stream-player {
+        border-radius: 13px;
+    }
+
+    .stream-info {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .stream-actions {
+        width: 100%;
+    }
+
+    .follow-button {
+        flex: 1;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .live-chat-panel {
+        border-radius: 13px;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .stream-empty h1 {
+        font-size: 17px;
+    }
+
+    .stream-empty p {
+        max-width: 280px;
+    }
+
+    .stream-icon {
+        width: 62px;
+        height: 62px;
+    }
+
+    .stream-info {
+        padding: 13px;
+    }
+
+    .stream-avatar {
+        width: 42px;
+        height: 42px;
+
+        flex-basis: 42px;
+    }
+
+}

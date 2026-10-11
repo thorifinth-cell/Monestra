@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Messages — Monestra</title>
+
+    <!-- GLOBAL NAVBAR -->
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+
+    <!-- COMMUNITY LIQUID GLASS NAV -->
+    <link rel="stylesheet" href="../Community/community-box.css">
+
+    <!-- MESSAGES -->
+    <link rel="stylesheet" href="Messages.css">
+
+    <!-- IONICONS -->
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="top-navbar">
+
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search..."
+                autocomplete="off"
+            >
+        </div>
+
+        <!-- LOGGED OUT -->
+        <div class="auth-buttons">
+            <button id="loginButton" class="login-button">
+                LOG IN
+            </button>
+
+            <button id="signupButton" class="signup-button">
+                SIGN UP
+            </button>
+        </div>
+
+        <!-- LOGGED IN -->
+        <div class="account-area">
+
+            <button
+                id="notificationButton"
+                class="nav-action"
+                aria-label="Notifications"
+            >
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button
+                id="accountButton"
+                class="nav-action profile-button"
+                aria-label="Profile"
+            >
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button
+                id="dotsButton"
+                class="nav-action dots-button"
+                aria-label="More"
+            >
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+            <div id="dotsMenu" class="dots-menu">
+
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+
+                <button
+                    class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()"
+                >
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MESSAGES
+    ====================================================== -->
+
+    <main class="messages-page">
+
+        <section class="messages-app">
+
+            <!-- =============================================
+                 CONVERSATIONS SIDEBAR
+            ============================================== -->
+
+            <aside class="conversations-panel">
+
+                <div class="messages-header">
+
+                    <div>
+                        <span class="messages-eyebrow">
+                            COMMUNITY
+                        </span>
+
+                        <h1>Messages</h1>
+                    </div>
+
+                    <button
+                        class="new-message-button"
+                        id="newMessageButton"
+                        aria-label="New message"
+                    >
+                        <ion-icon name="create-outline"></ion-icon>
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH CONVERSATIONS -->
+
+                <div class="conversation-search">
+
+                    <ion-icon name="search-outline"></ion-icon>
+
+                    <input
+                        type="text"
+                        id="conversationSearch"
+                        placeholder="Search Messenger"
+                    >
+
+                </div>
+
+
+                <!-- CONVERSATIONS -->
+
+                <div
+                    class="conversation-list"
+                    id="conversationList"
+                >
+
+                    <!-- EMPTY STATE -->
+
+                    <div
+                        class="messages-empty-sidebar"
+                        id="messagesEmptySidebar"
+                    >
+
+                        <div class="empty-sidebar-icon">
+                            <ion-icon name="chatbubbles-outline"></ion-icon>
+                        </div>
+
+                        <h3>No conversations yet</h3>
+
+                        <p>
+                            Your messages will appear here.
+                        </p>
+
+                        <button
+                            class="start-message-button"
+                            id="startMessageButton"
+                        >
+                            Start a conversation
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- =============================================
+                 CHAT AREA
+            ============================================== -->
+
+            <section class="chat-panel" id="chatPanel">
+
+                <!-- EMPTY CHAT -->
+
+                <div
+                    class="chat-empty"
+                    id="chatEmpty"
+                >
+
+                    <div class="chat-empty-icon">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+
+                    <h2>Your messages</h2>
+
+                    <p>
+                        Select a conversation or start a new one.
+                    </p>
+
+                    <button
+                        class="start-chat-button"
+                        id="emptyNewMessage"
+                    >
+                        <ion-icon name="create-outline"></ion-icon>
+                        New message
+                    </button>
+
+                </div>
+
+
+                <!-- REAL CHAT UI - READY FOR BACKEND -->
+
+                <div
+                    class="chat-interface"
+                    id="chatInterface"
+                    hidden
+                >
+
+                    <!-- CHAT HEADER -->
+
+                    <header class="chat-header">
+
+                        <button
+                            class="mobile-back-button"
+                            id="mobileBackButton"
+                            aria-label="Back"
+                        >
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </button>
+
+                        <div class="chat-user-avatar">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </div>
+
+                        <div class="chat-user-info">
+
+                            <strong id="chatUserName">
+                                User
+                            </strong>
+
+                            <span id="chatUserStatus">
+                                Active now
+                            </span>
+
+                        </div>
+
+                        <div class="chat-header-actions">
+
+                            <button aria-label="Audio call">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </button>
+
+                            <button aria-label="Video call">
+                                <ion-icon name="videocam-outline"></ion-icon>
+                            </button>
+
+                            <button aria-label="Conversation info">
+                                <ion-icon name="information-circle-outline"></ion-icon>
+                            </button>
+
+                        </div>
+
+                    </header>
+
+
+                    <!-- MESSAGES -->
+
+                    <div
+                        class="chat-messages"
+                        id="chatMessages"
+                    >
+
+                        <!-- Messages will be inserted here -->
+
+                    </div>
+
+
+                    <!-- MESSAGE INPUT -->
+
+                    <div class="message-composer">
+
+                        <button
+                            class="composer-action"
+                            aria-label="Add"
+                        >
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                        </button>
+
+                        <button
+                            class="composer-action"
+                            aria-label="Image"
+                        >
+                            <ion-icon name="image-outline"></ion-icon>
+                        </button>
+
+                        <div class="message-input-wrapper">
+
+                            <input
+                                type="text"
+                                id="messageInput"
+                                placeholder="Aa"
+                                autocomplete="off"
+                            >
+
+                            <button
+                                id="emojiButton"
+                                aria-label="Emoji"
+                            >
+                                <ion-icon name="happy-outline"></ion-icon>
+                            </button>
+
+                        </div>
+
+                        <button
+                            class="send-message-button"
+                            id="sendMessageButton"
+                            aria-label="Send"
+                        >
+                            <ion-icon name="send"></ion-icon>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         NEW MESSAGE MODAL
+    ====================================================== -->
+
+    <div
+        class="message-modal"
+        id="messageModal"
+        hidden
+    >
+
+        <div class="message-modal-backdrop"></div>
+
+        <div class="message-modal-card">
+
+            <div class="modal-header">
+
+                <h2>New message</h2>
+
+                <button id="closeMessageModal">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+            </div>
+
+            <div class="modal-search">
+
+                <span>To:</span>
+
+                <input
+                    type="text"
+                    id="newMessageSearch"
+                    placeholder="Search people..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <div class="modal-empty">
+
+                <div>
+                    <ion-icon name="person-add-outline"></ion-icon>
+                </div>
+
+                <h3>Find someone to message</h3>
+
+                <p>
+                    People you can message will appear here
+                    after account integration.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COMMUNITY NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="community-box"
+        aria-label="Community navigation"
+    >
+
+        <a
+            href="Feed.html"
+            class="community-box-item"
+            aria-label="Feed"
+            title="Feed"
+        >
+            <ion-icon name="newspaper-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Reels.html"
+            class="community-box-item"
+            aria-label="Reels"
+            title="Reels"
+        >
+            <ion-icon name="play-circle-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Messages.html"
+            class="community-box-item active"
+            aria-label="Messages"
+            title="Messages"
+        >
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Servers.html"
+            class="community-box-item"
+            aria-label="Servers"
+            title="Servers"
+        >
+            <ion-icon name="server-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Live.html"
+            class="community-box-item live"
+            aria-label="Live"
+            title="Live"
+        >
+            <ion-icon name="radio-outline"></ion-icon>
+        </a>
+
+    </nav>
+
+
+    <!-- SCRIPTS -->
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="../Community/community-box.js"></script>
+    <script src="Messages.js"></script>
+
+</body>
+</html>

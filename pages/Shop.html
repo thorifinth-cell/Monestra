@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monestra — Shop</title>
+
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+    <link rel="stylesheet" href="Shop.css">
+
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body class="shop-page">
+
+    <!-- GLOBAL NAVBAR -->
+    <nav class="top-navbar">
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input id="searchInput" type="text"
+                   placeholder="Search the shop..."
+                   autocomplete="off">
+        </div>
+
+        <div class="auth-buttons">
+            <button id="loginButton" class="login-button">LOG IN</button>
+            <button id="signupButton" class="signup-button">SIGN UP</button>
+        </div>
+
+        <div class="account-area">
+            <button id="notificationButton" class="nav-action"
+                    aria-label="Notifications">
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button id="accountButton" class="nav-action profile-button"
+                    aria-label="Profile">
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button id="dotsButton" class="nav-action dots-button"
+                    aria-label="More">
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+            <div id="dotsMenu" class="dots-menu">
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+                <button class="dots-menu-item" id="shopLogout">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDE NAVBAR -->
+    <nav class="side-navbar" aria-label="Main navigation">
+        <a href="../Monestra.html" class="side-nav-item"
+           data-label="Home" aria-label="Home">
+            <ion-icon name="home-outline"></ion-icon>
+        </a>
+
+        <a href="Discover.html" class="side-nav-item"
+           data-label="Discover" aria-label="Discover">
+            <ion-icon name="compass-outline"></ion-icon>
+        </a>
+
+        <a href="Community.html" class="side-nav-item"
+           data-label="Community" aria-label="Community">
+            <ion-icon name="people-outline"></ion-icon>
+        </a>
+
+        <a href="Shop.html" class="side-nav-item active"
+           data-label="Shop" aria-label="Shop">
+            <ion-icon name="bag-outline"></ion-icon>
+        </a>
+
+        <a href="My-Games.html" class="side-nav-item"
+           data-label="My Games" aria-label="My Games">
+            <ion-icon name="game-controller-outline"></ion-icon>
+        </a>
+    </nav>
+
+    <!-- SHOP -->
+    <main class="shop-main">
+
+        <section class="shop-hero">
+            <div class="hero-copy">
+                <span class="shop-eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    THE MONESTRA COLLECTION
+                </span>
+
+                <h1>Make it <span>yours.</span></h1>
+
+                <p>
+                    Customize your identity. Discover decorations,
+                    profile effects, themes and badges made for your world.
+                </p>
+
+                <button class="hero-button" id="exploreShop">
+                    Explore collection
+                    <ion-icon name="arrow-down-outline"></ion-icon>
+                </button>
+            </div>
+
+            <div class="hero-profile">
+                <div class="hero-orbit orbit-one"></div>
+                <div class="hero-orbit orbit-two"></div>
+
+                <div class="hero-preview-card">
+                    <div class="preview-card-top">
+                        <span class="mini-status"></span>
+                        <span>YOUR IDENTITY</span>
+                        <ion-icon name="sparkles-outline"></ion-icon>
+                    </div>
+
+                    <div class="hero-avatar-wrap" id="heroAvatarWrap">
+                        <div class="avatar-decoration decoration-none"
+                             id="heroDecoration">
+                            <img src="../Pictures/Monestra-logo.png"
+                                 class="shop-avatar-image"
+                                 id="heroAvatar"
+                                 alt="Your profile avatar">
+                        </div>
+                        <span class="hero-online-dot"></span>
+                    </div>
+
+                    <h2 id="heroUsername">Your profile</h2>
+                    <p class="hero-profile-subtitle">MONESTRA MEMBER</p>
+
+                    <div class="hero-profile-tags">
+                        <span><ion-icon name="game-controller-outline"></ion-icon> Gamer</span>
+                        <span><ion-icon name="sparkles-outline"></ion-icon> Original</span>
+                    </div>
+                </div>
+
+                <div class="floating-label label-top">
+                    <ion-icon name="color-palette-outline"></ion-icon>
+                    <span>YOUR STYLE</span>
+                </div>
+
+                <div class="floating-label label-bottom">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    <span>YOUR IDENTITY</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- USER SHOP PROFILE -->
+        <section class="shop-user-panel">
+            <div class="shop-user-left">
+                <div class="shop-user-avatar" id="shopUserAvatarWrap">
+                    <img src="../Pictures/Monestra-logo.png"
+                         id="shopUserAvatar"
+                         class="shop-avatar-image"
+                         alt="Monestra default avatar">
+                    <span class="user-avatar-status"></span>
+                </div>
+
+                <div class="shop-user-info">
+                    <span class="user-panel-label">YOUR MONESTRA ID</span>
+                    <h2 id="shopUsername">Your profile</h2>
+                    <p id="shopProfileHint">
+                        Your Monestra logo is your default avatar.
+                    </p>
+                </div>
+            </div>
+
+            <div class="shop-user-right">
+                <div class="owned-count">
+                    <span>YOUR COLLECTION</span>
+                    <strong id="ownedCount">0 <small>items</small></strong>
+                </div>
+
+                <button class="inventory-button" id="openInventory">
+                    <ion-icon name="grid-outline"></ion-icon>
+                    Inventory
+                </button>
+            </div>
+        </section>
+
+        <!-- FEATURED COLLECTION -->
+        <section class="shop-section" id="shopCollection">
+            <div class="shop-section-heading">
+                <div>
+                    <span class="section-eyebrow">FIND YOUR LOOK</span>
+                    <h2>Explore the shop<span>.</span></h2>
+                    <p>Give your profile a style of its own.</p>
+                </div>
+
+                <div class="shop-sort">
+                    <ion-icon name="options-outline"></ion-icon>
+                    <select id="sortProducts" aria-label="Sort products">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: low to high</option>
+                        <option value="price-high">Price: high to low</option>
+                        <option value="name">Name: A–Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="shop-category-list" id="shopCategories">
+                <button class="shop-category active" data-category="all">
+                    <ion-icon name="apps-outline"></ion-icon>
+                    <span>All items</span>
+                </button>
+
+                <button class="shop-category" data-category="decorations">
+                    <ion-icon name="ellipse-outline"></ion-icon>
+                    <span>Avatar decorations</span>
+                </button>
+
+                <button class="shop-category" data-category="effects">
+                    <ion-icon name="sparkles-outline"></ion-icon>
+                    <span>Profile effects</span>
+                </button>
+
+                <button class="shop-category" data-category="themes">
+                    <ion-icon name="color-palette-outline"></ion-icon>
+                    <span>Profile themes</span>
+                </button>
+
+                <button class="shop-category" data-category="badges">
+                    <ion-icon name="ribbon-outline"></ion-icon>
+                    <span>Badges</span>
+                </button>
+            </div>
+
+            <div class="shop-results-row">
+                <span id="resultsLabel">Featured items</span>
+                <span class="results-count" id="resultsCount">0 items</span>
+            </div>
+
+            <div class="shop-product-grid" id="shopProductGrid"></div>
+
+            <div class="shop-no-results" id="shopNoResults" hidden>
+                <ion-icon name="search-outline"></ion-icon>
+                <h3>No items found</h3>
+                <p>Try another search or select a different category.</p>
+                <button id="clearShopFilters">Clear filters</button>
+            </div>
+        </section>
+
+        <!-- INVENTORY -->
+        <section class="inventory-section" id="inventorySection">
+            <div class="shop-section-heading">
+                <div>
+                    <span class="section-eyebrow">YOUR PERSONAL COLLECTION</span>
+                    <h2>Your inventory<span>.</span></h2>
+                    <p>Items you've added to this browser's demo collection.</p>
+                </div>
+
+                <button class="text-button" id="backToShop">
+                    Back to shop
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+            </div>
+
+            <div class="inventory-grid" id="inventoryGrid"></div>
+
+            <div class="inventory-empty" id="inventoryEmpty">
+                <div class="inventory-empty-icon">
+                    <ion-icon name="cube-outline"></ion-icon>
+                </div>
+                <h3>Your collection starts here</h3>
+                <p>Preview an item and add it to your demo inventory to try it out.</p>
+                <button class="hero-button" id="inventoryExplore">
+                    Explore items
+                </button>
+            </div>
+        </section>
+
+        <footer class="shop-footer">
+            <a href="../Monestra.html" class="footer-brand">MONESTRA</a>
+            <span>YOUR WORLD. YOUR IDENTITY.</span>
+            <span>© 2026 MONESTRA</span>
+        </footer>
+
+    </main>
+
+    <!-- PRODUCT PREVIEW MODAL -->
+    <div class="shop-modal" id="productModal" hidden>
+        <div class="shop-modal-backdrop" data-close-modal></div>
+
+        <section class="shop-modal-card"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="modalProductName">
+
+            <button class="modal-close" data-close-modal
+                    aria-label="Close preview">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-preview-area" id="modalPreviewArea">
+                <div class="modal-avatar-frame" id="modalAvatarFrame">
+                    <img src="../Pictures/Monestra-logo.png"
+                         id="modalAvatar"
+                         class="shop-avatar-image"
+                         alt="Avatar preview">
+                </div>
+                <span class="modal-preview-caption">PROFILE PREVIEW</span>
+            </div>
+
+            <div class="modal-product-details">
+                <span class="modal-product-category" id="modalProductCategory">
+                    AVATAR DECORATION
+                </span>
+
+                <h2 id="modalProductName">Item name</h2>
+                <p id="modalProductDescription">Item description.</p>
+
+                <div class="modal-price-row">
+                    <span>Item price</span>
+                    <strong id="modalProductPrice">100 <small>MONES</small></strong>
+                </div>
+
+                <div class="modal-notice" id="modalNotice">
+                    This is a local preview. No real payment will be made.
+                </div>
+
+                <button class="modal-primary-button" id="modalBuyButton">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                    Add to demo inventory
+                </button>
+
+                <button class="modal-secondary-button" id="modalEquipButton" hidden>
+                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                    Equip item
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div class="shop-toast" id="shopToast" role="status" aria-live="polite">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        <span id="shopToastMessage">Done</span>
+    </div>
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="Shop.js"></script>
+</body>
+</html>

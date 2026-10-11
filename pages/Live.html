@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Live — Monestra</title>
+
+    <!-- GLOBAL NAVBAR -->
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+
+    <!-- COMMUNITY NAVIGATION -->
+    <link rel="stylesheet" href="../Community/community-box.css">
+
+    <!-- LIVE -->
+    <link rel="stylesheet" href="Live.css">
+
+    <!-- IONICONS -->
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         GLOBAL TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="top-navbar">
+
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+
+            <ion-icon name="search-outline"></ion-icon>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="auth-buttons">
+
+            <button id="loginButton" class="login-button">
+                LOG IN
+            </button>
+
+            <button id="signupButton" class="signup-button">
+                SIGN UP
+            </button>
+
+        </div>
+
+
+        <div class="account-area">
+
+            <button
+                id="notificationButton"
+                class="nav-action"
+                aria-label="Notifications"
+            >
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button
+                id="accountButton"
+                class="nav-action profile-button"
+                aria-label="Profile"
+            >
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button
+                id="dotsButton"
+                class="nav-action dots-button"
+                aria-label="More"
+            >
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+
+            <div id="dotsMenu" class="dots-menu">
+
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+
+                <button
+                    class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()"
+                >
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         LIVE PAGE
+    ====================================================== -->
+
+    <main class="live-page">
+
+        <div class="live-layout">
+
+
+            <!-- =================================================
+                 MAIN STREAM AREA
+            ================================================== -->
+
+            <section class="live-main">
+
+
+                <!-- STREAM PLAYER -->
+
+                <div class="stream-player">
+
+                    <div class="stream-empty">
+
+                        <div class="stream-icon">
+                            <ion-icon name="radio-outline"></ion-icon>
+                        </div>
+
+                        <span class="stream-live-label">
+                            LIVE
+                        </span>
+
+                        <h1>No live streams right now</h1>
+
+                        <p>
+                            When creators go live, their streams
+                            will appear here.
+                        </p>
+
+                        <button
+                            class="start-live-button"
+                            id="startLiveButton"
+                        >
+                            <ion-icon name="videocam-outline"></ion-icon>
+                            Go live
+                        </button>
+
+                    </div>
+
+
+                    <!-- PLAYER CONTROLS -->
+
+                    <div class="player-top">
+
+                        <div class="player-live-dot"></div>
+
+                        <span>LIVE</span>
+
+                    </div>
+
+                    <div class="player-bottom">
+
+                        <button
+                            aria-label="Play"
+                            class="player-control"
+                        >
+                            <ion-icon name="play"></ion-icon>
+                        </button>
+
+                        <div class="player-progress">
+                            <span></span>
+                        </div>
+
+                        <button
+                            aria-label="Volume"
+                            class="player-control"
+                        >
+                            <ion-icon name="volume-medium-outline"></ion-icon>
+                        </button>
+
+                        <button
+                            aria-label="Fullscreen"
+                            class="player-control"
+                        >
+                            <ion-icon name="scan-outline"></ion-icon>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STREAM INFORMATION -->
+
+                <section class="stream-info">
+
+                    <div class="stream-info-main">
+
+                        <div class="stream-avatar">
+
+                            <ion-icon name="person-outline"></ion-icon>
+
+                        </div>
+
+
+                        <div class="stream-details">
+
+                            <span class="stream-category">
+                                GAMING
+                            </span>
+
+                            <h2>
+                                No stream selected
+                            </h2>
+
+                            <p>
+                                Live streams from the Monestra
+                                community will appear here.
+                            </p>
+
+                            <div class="stream-tags">
+
+                                <span>Gaming</span>
+                                <span>Community</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stream-actions">
+
+                        <button
+                            class="follow-button"
+                            id="followButton"
+                        >
+                            <ion-icon name="heart-outline"></ion-icon>
+                            Follow
+                        </button>
+
+                        <button
+                            class="stream-action-button"
+                            title="Share"
+                        >
+                            <ion-icon name="share-social-outline"></ion-icon>
+                        </button>
+
+                        <button
+                            class="stream-action-button"
+                            title="More"
+                        >
+                            <ion-icon name="ellipsis-horizontal"></ion-icon>
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- LIVE CATEGORIES -->
+
+                <section class="live-categories">
+
+                    <div class="live-section-header">
+
+                        <h2>
+                            Browse live
+                        </h2>
+
+                        <span>
+                            MONESTRA LIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="category-grid">
+
+                        <button class="category-card">
+
+                            <div class="category-card-icon">
+                                <ion-icon name="game-controller-outline"></ion-icon>
+                            </div>
+
+                            <strong>Gaming</strong>
+
+                            <span>
+                                Discover gaming streams
+                            </span>
+
+                        </button>
+
+
+                        <button class="category-card">
+
+                            <div class="category-card-icon">
+                                <ion-icon name="musical-notes-outline"></ion-icon>
+                            </div>
+
+                            <strong>Music</strong>
+
+                            <span>
+                                Live music & creators
+                            </span>
+
+                        </button>
+
+
+                        <button class="category-card">
+
+                            <div class="category-card-icon">
+                                <ion-icon name="chatbubbles-outline"></ion-icon>
+                            </div>
+
+                            <strong>Just Chatting</strong>
+
+                            <span>
+                                Talk with the community
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- =================================================
+                 LIVE CHAT
+            ================================================== -->
+
+            <aside class="live-chat-panel">
+
+
+                <!-- CHAT HEADER -->
+
+                <header class="live-chat-header">
+
+                    <div>
+
+                        <span>
+                            LIVE CHAT
+                        </span>
+
+                        <strong>
+                            Community
+                        </strong>
+
+                    </div>
+
+                    <button
+                        id="chatSettingsButton"
+                        aria-label="Chat settings"
+                    >
+                        <ion-icon name="ellipsis-horizontal"></ion-icon>
+                    </button>
+
+                </header>
+
+
+                <!-- CHAT CONTENT -->
+
+                <div
+                    class="live-chat-messages"
+                    id="liveChatMessages"
+                >
+
+                    <div class="chat-empty">
+
+                        <div class="chat-empty-icon">
+
+                            <ion-icon name="chatbubbles-outline"></ion-icon>
+
+                        </div>
+
+                        <h3>Live chat</h3>
+
+                        <p>
+                            Chat will appear here when
+                            a live stream starts.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CHAT INPUT -->
+
+                <div class="live-chat-composer">
+
+                    <div class="chat-input-wrapper">
+
+                        <input
+                            type="text"
+                            id="liveChatInput"
+                            placeholder="Send a message..."
+                            autocomplete="off"
+                        >
+
+                        <button
+                            id="liveEmojiButton"
+                            aria-label="Emoji"
+                        >
+                            <ion-icon name="happy-outline"></ion-icon>
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="live-chat-send"
+                        id="liveChatSend"
+                        aria-label="Send"
+                    >
+                        <ion-icon name="send"></ion-icon>
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         GO LIVE MODAL
+    ====================================================== -->
+
+    <div
+        class="live-modal"
+        id="liveModal"
+        hidden
+    >
+
+        <div class="live-modal-backdrop"></div>
+
+        <div class="live-modal-card">
+
+            <button
+                class="close-live-modal"
+                id="closeLiveModal"
+            >
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="live-modal-icon">
+
+                <ion-icon name="radio-outline"></ion-icon>
+
+            </div>
+
+            <h2>Go live</h2>
+
+            <p>
+                Start broadcasting your game or content
+                to the Monestra community.
+            </p>
+
+            <button class="modal-live-primary">
+                <ion-icon name="videocam-outline"></ion-icon>
+                Start streaming
+            </button>
+
+            <button class="modal-live-secondary">
+                <ion-icon name="settings-outline"></ion-icon>
+                Stream settings
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COMMUNITY NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="community-box"
+        aria-label="Community navigation"
+    >
+
+        <a
+            href="Feed.html"
+            class="community-box-item"
+            aria-label="Feed"
+            title="Feed"
+        >
+            <ion-icon name="newspaper-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Reels.html"
+            class="community-box-item"
+            aria-label="Reels"
+            title="Reels"
+        >
+            <ion-icon name="play-circle-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Messages.html"
+            class="community-box-item"
+            aria-label="Messages"
+            title="Messages"
+        >
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Servers.html"
+            class="community-box-item"
+            aria-label="Servers"
+            title="Servers"
+        >
+            <ion-icon name="server-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Live.html"
+            class="community-box-item active live"
+            aria-label="Live"
+            title="Live"
+        >
+            <ion-icon name="radio-outline"></ion-icon>
+        </a>
+
+    </nav>
+
+
+    <!-- SCRIPTS -->
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="../Community/community-box.js"></script>
+    <script src="Live.js"></script>
+
+</body>
+</html>

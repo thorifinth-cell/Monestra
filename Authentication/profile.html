@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monestra — Profile</title>
+
+    <link rel="stylesheet" href="profile.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="profile.js" defer></script>
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="top-header">
+        <a href="../Monestra.html" class="brand">
+            <span class="brand-mark">
+                <img
+                    src="../Pictures/Monestra-logo.png"
+                    alt="Monestra logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <ion-icon name="game-controller" style="display:none"></ion-icon>
+            </span>
+            <span>MONESTRA</span>
+        </a>
+
+        <nav class="header-actions">
+            <a href="../Monestra.html" class="home-link">
+                <ion-icon name="home-outline"></ion-icon>
+                <span>Home</span>
+            </a>
+
+            <button type="button" class="logout-button" id="logoutButton">
+                <ion-icon name="log-out-outline"></ion-icon>
+                <span>Log out</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="profile-page">
+
+        <div class="page-heading">
+            <div>
+                <span class="eyebrow">YOUR MONESTRA SPACE</span>
+                <h1>My <span>Profile.</span></h1>
+                <p>Manage your identity and make this space yours.</p>
+            </div>
+
+            <span class="profile-status">
+                <span class="status-dot"></span>
+                PLAYER PROFILE
+            </span>
+        </div>
+
+        <section class="profile-card">
+
+            <!-- COVER -->
+            <div class="cover-area" id="coverArea">
+                <div class="cover-overlay"></div>
+
+                <div class="cover-label">
+                    <ion-icon name="sparkles-outline"></ion-icon>
+                    <span>YOUR WORLD, YOUR RULES</span>
+                </div>
+
+                <button type="button" class="cover-edit-button" id="changeCoverButton">
+                    <ion-icon name="image-outline"></ion-icon>
+                    <span>Change cover</span>
+                </button>
+
+                <input
+                    type="file"
+                    id="coverInput"
+                    accept="image/png,image/jpeg,image/webp"
+                    hidden
+                >
+            </div>
+
+            <!-- PROFILE INFORMATION -->
+            <div class="profile-main">
+
+                <div class="avatar-column">
+                    <div class="avatar-wrap">
+                        <img
+                            id="profileAvatar"
+                            class="profile-avatar"
+                            src="../Pictures/Monestra-logo.png"
+                            alt="Profile picture"
+                        >
+
+                        <button
+                            type="button"
+                            class="avatar-edit-button"
+                            id="changeAvatarButton"
+                            aria-label="Change profile picture"
+                        >
+                            <ion-icon name="camera-outline"></ion-icon>
+                        </button>
+
+                        <input
+                            type="file"
+                            id="avatarInput"
+                            accept="image/png,image/jpeg,image/webp"
+                            hidden
+                        >
+                    </div>
+
+                    <span class="avatar-caption">YOUR AVATAR</span>
+                </div>
+
+                <div class="identity-area">
+                    <span class="member-label">
+                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                        MONESTRA MEMBER
+                    </span>
+
+                    <h2 id="profileUsername">Player</h2>
+
+                    <p class="profile-email" id="profileEmail">
+                        Your email address
+                    </p>
+
+                    <p class="profile-bio" id="profileBio">
+                        No bio yet. Tell the community a little about yourself.
+                    </p>
+
+                    <div class="profile-meta">
+                        <span>
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            Joined <span id="joinedDate">recently</span>
+                        </span>
+                        <span>
+                            <ion-icon name="game-controller-outline"></ion-icon>
+                            Gaming enthusiast
+                        </span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button type="button" class="primary-button" id="editProfileButton">
+                        <ion-icon name="create-outline"></ion-icon>
+                        Edit profile
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- STATS -->
+            <div class="stats-section">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">YOUR ACTIVITY</span>
+                        <h3>Profile overview</h3>
+                    </div>
+                    <span class="stats-note">Your personal space</span>
+                </div>
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <span class="stat-icon">
+                            <ion-icon name="game-controller-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <span class="stat-label">MY GAMES</span>
+                            <strong id="gamesCount">0</strong>
+                            <small>Games in your library</small>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <span class="stat-label">COMMUNITY</span>
+                            <strong id="communityCount">0</strong>
+                            <small>Connections</small>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <span class="stat-label">POSTS</span>
+                            <strong id="postsCount">0</strong>
+                            <small>Posts shared</small>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- PROFILE DETAILS -->
+        <section class="details-card">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">ACCOUNT DETAILS</span>
+                    <h3>Your information</h3>
+                </div>
+
+                <ion-icon class="details-heading-icon" name="person-circle-outline"></ion-icon>
+            </div>
+
+            <div class="details-list">
+                <div class="detail-row">
+                    <span class="detail-icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <div class="detail-copy">
+                        <span>Username</span>
+                        <strong id="detailUsername">—</strong>
+                    </div>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    <div class="detail-copy">
+                        <span>Email address</span>
+                        <strong id="detailEmail">—</strong>
+                    </div>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-icon">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                    </span>
+                    <div class="detail-copy">
+                        <span>About me</span>
+                        <strong id="detailBio">No bio added</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <p class="privacy-note">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            Your profile details are saved in this browser for now.
+        </p>
+
+    </main>
+
+    <!-- EDIT PROFILE MODAL -->
+    <div class="modal-backdrop" id="editModal" hidden>
+        <section
+            class="edit-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="editModalTitle"
+        >
+            <div class="modal-heading">
+                <div>
+                    <span class="section-kicker">PERSONALIZE YOUR SPACE</span>
+                    <h2 id="editModalTitle">Edit profile</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal-button"
+                    id="closeModalButton"
+                    aria-label="Close edit profile"
+                >
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+
+            <form id="editProfileForm">
+
+                <div class="edit-field">
+                    <label for="editUsername">Username</label>
+                    <input
+                        type="text"
+                        id="editUsername"
+                        name="username"
+                        minlength="3"
+                        maxlength="24"
+                        autocomplete="nickname"
+                        required
+                    >
+                    <small class="edit-error" id="editUsernameError"></small>
+                </div>
+
+                <div class="edit-field">
+                    <label for="editBio">Bio</label>
+                    <textarea
+                        id="editBio"
+                        name="bio"
+                        maxlength="180"
+                        rows="4"
+                        placeholder="Tell us about yourself..."
+                    ></textarea>
+
+                    <div class="bio-footer">
+                        <small>Share a little about yourself.</small>
+                        <small><span id="bioCharCount">0</span>/180</small>
+                    </div>
+                </div>
+
+                <div class="modal-message" id="modalMessage" role="status"></div>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-button" id="cancelEditButton">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="save-button">
+                        <ion-icon name="checkmark-outline"></ion-icon>
+                        Save changes
+                    </button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+        <span id="toastText">Changes saved.</span>
+    </div>
+
+</body>
+</html>

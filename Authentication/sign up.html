@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monestra — Create Account</title>
+
+    <link rel="stylesheet" href="sign up.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="sign up.js" defer></script>
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="top-header">
+        <a href="../Monestra.html" class="brand">
+            <span class="brand-mark">
+                <img src="../Pictures/Monestra-logo.png" alt="Monestra logo"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <ion-icon name="game-controller" style="display:none"></ion-icon>
+            </span>
+            <span>MONESTRA</span>
+        </a>
+
+        <a href="../Monestra.html" class="back-home">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            <span>Back to home</span>
+        </a>
+    </header>
+
+    <main class="signup-layout">
+
+        <section class="welcome-panel">
+            <div class="welcome-content">
+                <span class="eyebrow">
+                    <span class="status-dot"></span>
+                    YOUR NEXT ADVENTURE STARTS HERE
+                </span>
+
+                <h1>Enter a world<br>of <span>possibilities.</span></h1>
+
+                <p>
+                    Create your Monestra account and bring your gaming
+                    world, your community and your favorite moments together.
+                </p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <ion-icon name="game-controller-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <h3>Your gaming space</h3>
+                            <p>Keep your games and progress organized.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <h3>Your community</h3>
+                            <p>Connect with people who share your interests.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <ion-icon name="sparkles-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <h3>Your identity</h3>
+                            <p>Build a profile that feels like you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-decoration" aria-hidden="true">
+                <div class="decoration-ring ring-one"></div>
+                <div class="decoration-ring ring-two"></div>
+                <ion-icon name="game-controller-outline"></ion-icon>
+            </div>
+
+            <div class="panel-footer">
+                <span>PLAY YOUR WAY.</span>
+                <span>BE PART OF MONESTRA.</span>
+            </div>
+        </section>
+
+        <section class="form-panel">
+            <div class="form-container">
+
+                <div class="mobile-brand">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    MONESTRA
+                </div>
+
+                <div class="form-heading">
+                    <span class="form-tag">CREATE YOUR ACCOUNT</span>
+                    <h2>Join Monestra<span>.</span></h2>
+                    <p>Set up your account. Your journey starts here.</p>
+                </div>
+
+                <form id="signupForm" novalidate>
+
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <div class="input-wrapper">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Choose a username"
+                                minlength="3"
+                                maxlength="24"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+                        <small class="field-error" id="usernameError"></small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email address</label>
+                        <div class="input-wrapper">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+                        <small class="field-error" id="emailError"></small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                                required
+                            >
+                            <button type="button" class="toggle-password"
+                                    data-target="password" aria-label="Show password">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-track">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <small id="strengthText">At least 8 characters</small>
+                        </div>
+
+                        <small class="field-error" id="passwordError"></small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirmPassword">Confirm password</label>
+                        <div class="input-wrapper">
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Enter your password again"
+                                autocomplete="new-password"
+                                required
+                            >
+                            <button type="button" class="toggle-password"
+                                    data-target="confirmPassword"
+                                    aria-label="Show confirmation password">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+                        <small class="field-error" id="confirmPasswordError"></small>
+                    </div>
+
+                    <label class="terms-row">
+                        <input type="checkbox" id="terms">
+                        <span class="custom-checkbox">
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                        </span>
+                        <span>
+                            I agree to the <a href="#" id="termsLink">Terms of Service</a>
+                            and <a href="#" id="privacyLink">Privacy Policy</a>.
+                        </span>
+                    </label>
+
+                    <small class="field-error terms-error" id="termsError"></small>
+
+                    <div class="form-message" id="formMessage" role="status"
+                         aria-live="polite"></div>
+
+                    <button type="submit" class="submit-button" id="signupButton">
+                        <span>Create account</span>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+
+                </form>
+
+                <div class="form-divider">
+                    <span>ALREADY PART OF MONESTRA?</span>
+                </div>
+
+                <p class="login-prompt">
+                    Already have an account?
+                    <a href="log in.html">Log in</a>
+                </p>
+
+                <p class="security-note">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    Your account details should always stay private.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="page-footer">
+        <span>© <span id="currentYear"></span> Monestra</span>
+        <span>MADE FOR YOUR WORLD.</span>
+    </footer>
+
+</body>
+</html>

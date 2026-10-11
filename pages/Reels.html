@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Monestra — Reels</title>
+
+    <!-- NAVBAR -->
+    <link
+        rel="stylesheet"
+        href="../Navbar/navbar.css"
+    >
+
+    <!-- COMMUNITY BOX -->
+    <link
+        rel="stylesheet"
+        href="../Community/community-box.css"
+    >
+
+    <!-- REELS -->
+    <link
+        rel="stylesheet"
+        href="Reels.css"
+    >
+
+    <!-- IONICONS -->
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="top-navbar">
+
+        <div class="navbar-brand">
+
+            <a href="../Monestra.html">
+                MONESTRA
+            </a>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <ion-icon name="search-outline"></ion-icon>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="auth-buttons">
+
+            <button
+                id="loginButton"
+                class="login-button"
+            >
+                LOG IN
+            </button>
+
+            <button
+                id="signupButton"
+                class="signup-button"
+            >
+                SIGN UP
+            </button>
+
+        </div>
+
+
+        <div class="account-area">
+
+            <button
+                id="notificationButton"
+                class="nav-action"
+                aria-label="Notifications"
+            >
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+
+            <button
+                id="accountButton"
+                class="nav-action profile-button"
+                aria-label="Profile"
+            >
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+
+            <button
+                id="dotsButton"
+                class="nav-action dots-button"
+                aria-label="More"
+            >
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+
+            <div
+                id="dotsMenu"
+                class="dots-menu"
+            >
+
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+
+                <button
+                    class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()"
+                >
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         REELS
+    ====================================================== -->
+
+    <main class="reels-page">
+
+        <div
+            class="reels-container"
+            id="reelsContainer"
+        >
+
+            <!--
+                REAL REELS WILL BE INSERTED HERE
+                AFTER BACKEND INTEGRATION
+            -->
+
+
+            <section class="reels-empty">
+
+                <div class="reels-empty-icon">
+
+                    <ion-icon
+                        name="play-circle-outline">
+                    </ion-icon>
+
+                </div>
+
+
+                <h1>
+                    Reels
+                </h1>
+
+
+                <p>
+                    Your gaming community reels will appear here.
+                </p>
+
+
+                <span>
+                    Scroll vertically to explore
+                </span>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         COMMUNITY LIQUID GLASS BOX
+    ====================================================== -->
+
+    <nav
+        class="community-box"
+        aria-label="Community navigation"
+    >
+
+        <a
+            href="Feed.html"
+            class="community-box-item"
+            aria-label="Feed"
+            title="Feed"
+        >
+            <ion-icon
+                name="newspaper-outline">
+            </ion-icon>
+        </a>
+
+
+        <a
+            href="Reels.html"
+            class="community-box-item active"
+            aria-label="Reels"
+            title="Reels"
+        >
+            <ion-icon
+                name="play-circle-outline">
+            </ion-icon>
+        </a>
+
+
+        <a
+            href="Messages.html"
+            class="community-box-item"
+            aria-label="Messages"
+            title="Messages"
+        >
+            <ion-icon
+                name="chatbubbles-outline">
+            </ion-icon>
+        </a>
+
+
+        <a
+            href="Servers.html"
+            class="community-box-item"
+            aria-label="Servers"
+            title="Servers"
+        >
+            <ion-icon
+                name="server-outline">
+            </ion-icon>
+        </a>
+
+
+        <a
+            href="Live.html"
+            class="community-box-item live"
+            aria-label="Live"
+            title="Live"
+        >
+            <ion-icon
+                name="radio-outline">
+            </ion-icon>
+        </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="../Navbar/navbar.js"></script>
+
+    <script src="../Community/community-box.js"></script>
+
+    <script src="Reels.js"></script>
+
+
+</body>
+
+</html>

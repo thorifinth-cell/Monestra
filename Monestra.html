@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Monestra</title>
+
+
+    <!-- HOME CSS -->
+    <link
+        rel="stylesheet"
+        href="Monestra.css"
+    >
+
+
+    <!-- NAVBAR CSS -->
+    <link
+        rel="stylesheet"
+        href="Navbar/navbar.css"
+    >
+
+
+    <!-- IONICONS -->
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="top-navbar">
+
+
+        <!-- MONESTRA -->
+
+        <div class="navbar-brand">
+
+            <a href="Monestra.html">
+                MONESTRA
+            </a>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <ion-icon
+                name="search-outline">
+            </ion-icon>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+
+        <!-- LOGIN / SIGN UP -->
+
+        <div class="auth-buttons">
+
+            <button
+                id="loginButton"
+                class="login-button"
+            >
+                LOG IN
+            </button>
+
+
+            <button
+                id="signupButton"
+                class="signup-button"
+            >
+                SIGN UP
+            </button>
+
+        </div>
+
+
+
+        <!-- ACCOUNT AREA -->
+
+        <div class="account-area">
+
+
+            <!-- NOTIFICATIONS -->
+
+            <button
+                id="notificationButton"
+                class="nav-action"
+                aria-label="Notifications"
+            >
+
+                <ion-icon
+                    name="notifications-outline">
+                </ion-icon>
+
+            </button>
+
+
+
+            <!-- PROFILE -->
+
+            <button
+                id="accountButton"
+                class="nav-action profile-button"
+                aria-label="Profile"
+            >
+
+                <ion-icon
+                    name="person-outline">
+                </ion-icon>
+
+            </button>
+
+
+
+            <!-- THREE DOTS -->
+
+            <button
+                id="dotsButton"
+                class="nav-action dots-button"
+                aria-label="More"
+            >
+
+                <ion-icon
+                    name="ellipsis-vertical">
+                </ion-icon>
+
+            </button>
+
+
+
+            <!-- THREE DOTS MENU -->
+
+            <div
+                id="dotsMenu"
+                class="dots-menu"
+            >
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="settings-outline">
+                    </ion-icon>
+
+                    Settings
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="heart-outline">
+                    </ion-icon>
+
+                    Favorites
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="game-controller-outline">
+                    </ion-icon>
+
+                    My Games
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="information-circle-outline">
+                    </ion-icon>
+
+                    About
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="mail-outline">
+                    </ion-icon>
+
+                    Contact
+
+                </button>
+
+
+                <button
+                    class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()"
+                >
+
+                    <ion-icon
+                        name="log-out-outline">
+                    </ion-icon>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         SIDE NAVBAR
+    ====================================================== -->
+
+    <nav class="side-navbar">
+
+
+        <!-- HOME -->
+
+        <a
+            href="Monestra.html"
+            class="side-nav-item active"
+            data-label="Home"
+        >
+
+            <ion-icon
+                name="home-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- DISCOVER -->
+
+        <a
+            href="pages/Discover.html"
+            class="side-nav-item"
+            data-label="Discover"
+        >
+
+            <ion-icon
+                name="compass-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- COMMUNITY -->
+
+        <a
+            href="pages/Community.html"
+            class="side-nav-item"
+            data-label="Community"
+        >
+
+            <ion-icon
+                name="people-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- SHOP -->
+
+        <a
+            href="pages/Shop.html"
+            class="side-nav-item"
+            data-label="Shop"
+        >
+
+            <ion-icon
+                name="bag-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- MY GAMES -->
+
+        <a
+            href="pages/My-Games.html"
+            class="side-nav-item"
+            data-label="My Games"
+        >
+
+            <ion-icon
+                name="game-controller-outline">
+            </ion-icon>
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         HOME
+    ====================================================== -->
+
+    <main class="home">
+
+        <div class="home-background"></div>
+
+        <div class="home-overlay"></div>
+
+        <div class="logo-container">
+
+            <img
+                src="Pictures/Monestra-logo.png"
+                alt="Monestra"
+                class="monestra-logo"
+            >
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="home-footer">
+
+        MADE IN TUNISIA
+
+        <span>•</span>
+
+        © 2026 MONESTRA
+
+    </footer>
+
+
+
+    <!-- NAVBAR JS -->
+
+    <script src="Navbar/navbar.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Monestra — Community</title>
+
+    <!-- NAVBAR CSS -->
+    <link
+        rel="stylesheet"
+        href="../Navbar/navbar.css"
+    >
+
+    <!-- COMMUNITY CSS -->
+    <link
+        rel="stylesheet"
+        href="../Community.css"
+    >
+
+    <!-- IONICONS -->
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="top-navbar">
+
+        <div class="navbar-brand">
+
+            <a href="../Monestra.html">
+                MONESTRA
+            </a>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <ion-icon
+                name="search-outline">
+            </ion-icon>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <!-- NOT LOGGED IN -->
+
+        <div class="auth-buttons">
+
+            <button
+                id="loginButton"
+                class="login-button"
+            >
+                LOG IN
+            </button>
+
+            <button
+                id="signupButton"
+                class="signup-button"
+            >
+                SIGN UP
+            </button>
+
+        </div>
+
+
+        <!-- LOGGED IN -->
+
+        <div class="account-area">
+
+            <button
+                id="notificationButton"
+                class="nav-action"
+                aria-label="Notifications"
+            >
+
+                <ion-icon
+                    name="notifications-outline">
+                </ion-icon>
+
+            </button>
+
+
+            <button
+                id="accountButton"
+                class="nav-action profile-button"
+                aria-label="Profile"
+            >
+
+                <ion-icon
+                    name="person-outline">
+                </ion-icon>
+
+            </button>
+
+
+            <button
+                id="dotsButton"
+                class="nav-action dots-button"
+                aria-label="More"
+            >
+
+                <ion-icon
+                    name="ellipsis-vertical">
+                </ion-icon>
+
+            </button>
+
+
+            <!-- THREE DOTS MENU -->
+
+            <div
+                id="dotsMenu"
+                class="dots-menu"
+            >
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="settings-outline">
+                    </ion-icon>
+
+                    Settings
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="heart-outline">
+                    </ion-icon>
+
+                    Favorites
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="game-controller-outline">
+                    </ion-icon>
+
+                    My Games
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="information-circle-outline">
+                    </ion-icon>
+
+                    About
+
+                </button>
+
+
+                <button class="dots-menu-item">
+
+                    <ion-icon
+                        name="mail-outline">
+                    </ion-icon>
+
+                    Contact
+
+                </button>
+
+
+                <button
+                    class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()"
+                >
+
+                    <ion-icon
+                        name="log-out-outline">
+                    </ion-icon>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         COMMUNITY PAGE
+    ====================================================== -->
+
+    <main class="community-page">
+
+
+        <section class="community-center">
+
+            <div class="community-label">
+                MONESTRA COMMUNITY
+            </div>
+
+
+            <h1>
+                COMMUNITY
+            </h1>
+
+
+            <p>
+                Connect, share, play and discover.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         LIQUID GLASS COMMUNITY BOX
+    ====================================================== -->
+
+    <nav class="community-box">
+
+
+        <!-- FEED -->
+
+        <a
+            href="Feed.html"
+            class="community-box-item"
+            data-page="feed"
+            aria-label="Feed"
+            title="Feed"
+        >
+
+            <ion-icon
+                name="newspaper-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- REELS -->
+
+        <a
+            href="Reels.html"
+            class="community-box-item"
+            data-page="reels"
+            aria-label="Reels"
+            title="Reels"
+        >
+
+            <ion-icon
+                name="play-circle-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- MESSAGES -->
+
+        <a
+            href="Messages.html"
+            class="community-box-item"
+            data-page="messages"
+            aria-label="Messages"
+            title="Messages"
+        >
+
+            <ion-icon
+                name="chatbubbles-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- SERVERS -->
+
+        <a
+            href="Servers.html"
+            class="community-box-item"
+            data-page="servers"
+            aria-label="Servers"
+            title="Servers"
+        >
+
+            <ion-icon
+                name="server-outline">
+            </ion-icon>
+
+        </a>
+
+
+
+        <!-- LIVE -->
+
+        <a
+            href="Live.html"
+            class="community-box-item live"
+            data-page="live"
+            aria-label="Live"
+            title="Live"
+        >
+
+            <ion-icon
+                name="radio-outline">
+            </ion-icon>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         NAVBAR JS
+    ====================================================== -->
+
+    <script src="../Navbar/navbar.js"></script>
+
+
+
+    <!-- =====================================================
+         COMMUNITY BOX JS
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const items =
+                    document.querySelectorAll(
+                        ".community-box-item"
+                    );
+
+
+                const currentPage =
+                    window.location.pathname
+                        .split("/")
+                        .pop()
+                        .toLowerCase();
+
+
+                items.forEach((item) => {
+
+                    const href =
+                        item.getAttribute("href");
+
+
+                    if (!href) {
+                        return;
+                    }
+
+
+                    const targetPage =
+                        href
+                            .split("/")
+                            .pop()
+                            .toLowerCase();
+
+
+                    /*
+                        Community.html
+                        = default Feed state
+                    */
+
+                    if (
+                        currentPage === "community.html" &&
+                        targetPage === "feed.html"
+                    ) {
+
+                        item.classList.add("active");
+
+                    }
+
+
+                    /*
+                        Other Community pages
+                    */
+
+                    else if (
+                        targetPage === currentPage
+                    ) {
+
+                        item.classList.add("active");
+
+                    }
+
+
+                    /*
+                        Click animation
+                    */
+
+                    item.addEventListener(
+                        "click",
+                        () => {
+
+                            items.forEach(
+                                (other) => {
+
+                                    other.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                            item.classList.add(
+                                "active"
+                            );
+
+                        }
+                    );
+
+                });
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

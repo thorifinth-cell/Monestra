@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Games | Monestra</title>
+
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+    <link rel="stylesheet" href="My-Games.css">
+
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="top-navbar">
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" id="searchInput"
+                placeholder="Search your games..." autocomplete="off">
+        </div>
+
+        <div class="auth-buttons">
+            <button id="loginButton" class="login-button">LOG IN</button>
+            <button id="signupButton" class="signup-button">SIGN UP</button>
+        </div>
+
+        <div class="account-area">
+            <button id="notificationButton" class="nav-action"
+                aria-label="Notifications">
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button id="accountButton" class="nav-action profile-button"
+                aria-label="Profile">
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button id="dotsButton" class="nav-action dots-button"
+                aria-label="More options">
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+            <div id="dotsMenu" class="dots-menu">
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+                <button class="dots-menu-item" onclick="MonestraNavbar.logout()">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIDE NAVBAR -->
+    <nav class="side-navbar">
+        <a href="../Monestra.html" class="side-nav-item" data-label="Home">
+            <ion-icon name="home-outline"></ion-icon>
+        </a>
+
+        <a href="Discover.html" class="side-nav-item" data-label="Discover">
+            <ion-icon name="compass-outline"></ion-icon>
+        </a>
+
+        <a href="Community.html" class="side-nav-item" data-label="Community">
+            <ion-icon name="people-outline"></ion-icon>
+        </a>
+
+        <a href="Shop.html" class="side-nav-item" data-label="Shop">
+            <ion-icon name="bag-outline"></ion-icon>
+        </a>
+
+        <a href="My-Games.html" class="side-nav-item active" data-label="My Games">
+            <ion-icon name="game-controller-outline"></ion-icon>
+        </a>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="library-page">
+
+        <!-- HEADER -->
+        <header class="library-header">
+            <div class="library-header-copy">
+                <span class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    YOUR PERSONAL COLLECTION
+                </span>
+
+                <h1>MY <span>GAMES.</span></h1>
+
+                <p>
+                    Your games, your collection, your next adventure.
+                </p>
+            </div>
+
+            <div class="library-header-icon">
+                <ion-icon name="game-controller-outline"></ion-icon>
+            </div>
+        </header>
+
+        <!-- LIBRARY SUMMARY -->
+        <section class="library-overview">
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                </div>
+                <div>
+                    <span class="overview-number" id="totalGames">0</span>
+                    <p>Total games</p>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <ion-icon name="play-circle-outline"></ion-icon>
+                </div>
+                <div>
+                    <span class="overview-number" id="playingGames">0</span>
+                    <p>Currently playing</p>
+                </div>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                </div>
+                <div>
+                    <span class="overview-number" id="completedGames">0</span>
+                    <p>Completed</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIBRARY CONTROLS -->
+        <section class="library-section">
+
+            <div class="library-section-heading">
+                <div>
+                    <span class="section-kicker">YOUR COLLECTION</span>
+                    <h2>Game library</h2>
+                </div>
+
+                <button class="add-game-button" id="addGameButton">
+                    <ion-icon name="add-outline"></ion-icon>
+                    Add a game
+                </button>
+            </div>
+
+            <div class="library-toolbar">
+                <div class="library-tabs" id="libraryTabs">
+                    <button class="library-tab active" data-filter="All">
+                        All games
+                    </button>
+                    <button class="library-tab" data-filter="Playing">
+                        Playing
+                    </button>
+                    <button class="library-tab" data-filter="Completed">
+                        Completed
+                    </button>
+                    <button class="library-tab" data-filter="Backlog">
+                        Want to play
+                    </button>
+                </div>
+
+                <label class="library-sort">
+                    <ion-icon name="swap-vertical-outline"></ion-icon>
+                    <select id="sortGames" aria-label="Sort games">
+                        <option value="recent">Recently added</option>
+                        <option value="az">Name: A to Z</option>
+                        <option value="za">Name: Z to A</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="library-results">
+                <span id="libraryResultsLabel">Your collection is empty</span>
+
+                <button id="resetLibraryFilters" class="reset-filters">
+                    Clear filters
+                </button>
+            </div>
+
+            <!-- GAMES -->
+            <div class="library-grid" id="libraryGrid"></div>
+
+            <!-- EMPTY STATE -->
+            <div class="library-empty" id="libraryEmpty">
+                <div class="empty-game-icon">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                </div>
+
+                <h3>Your library starts here.</h3>
+
+                <p>
+                    Add your favorite games to build your personal Monestra collection.
+                </p>
+
+                <button id="emptyAddGameButton">
+                    <ion-icon name="add-outline"></ion-icon>
+                    Add your first game
+                </button>
+
+                <a href="Discover.html" class="browse-games-link">
+                    Or discover games
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="library-footer">
+            <span>MONESTRA</span>
+            <p>MADE IN TUNISIA <span>•</span> © 2026 MONESTRA</p>
+        </footer>
+    </main>
+
+    <!-- ADD GAME MODAL -->
+    <div class="library-modal" id="addGameModal" aria-hidden="true">
+        <div class="library-modal-backdrop" id="addModalBackdrop"></div>
+
+        <div class="library-modal-card" role="dialog" aria-modal="true"
+            aria-labelledby="addModalTitle">
+
+            <div class="modal-heading">
+                <div>
+                    <span class="section-kicker">PERSONAL COLLECTION</span>
+                    <h2 id="addModalTitle">Add a game</h2>
+                </div>
+
+                <button class="modal-close" id="closeAddModal"
+                    aria-label="Close">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+
+            <form id="addGameForm">
+                <label class="form-label" for="newGameName">Game name</label>
+                <input id="newGameName" name="gameName" type="text"
+                    placeholder="Enter game name..." maxlength="70" required>
+
+                <label class="form-label" for="newGameCategory">Genre</label>
+                <select id="newGameCategory" name="gameCategory" required>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Indie">Indie</option>
+                    <option value="Multiplayer">Multiplayer</option>
+                    <option value="Rhythm">Rhythm</option>
+                    <option value="Action">Action</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label class="form-label" for="newGameStatus">Your status</label>
+                <select id="newGameStatus" name="gameStatus" required>
+                    <option value="Backlog">Want to play</option>
+                    <option value="Playing">Currently playing</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <label class="form-label" for="newGameDescription">
+                    Description <span>(optional)</span>
+                </label>
+                <textarea id="newGameDescription" name="gameDescription"
+                    rows="3" maxlength="220"
+                    placeholder="Write a short note about this game..."></textarea>
+
+                <label class="form-label" for="newGameImage">
+                    Cover image URL <span>(optional)</span>
+                </label>
+                <input id="newGameImage" name="gameImage" type="url"
+                    placeholder="https://example.com/cover.jpg">
+
+                <p class="form-note">
+                    Games added here are saved in this browser only for now.
+                </p>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-button" id="cancelAddGame">
+                        Cancel
+                    </button>
+                    <button type="submit" class="save-game-button">
+                        <ion-icon name="checkmark-outline"></ion-icon>
+                        Add to library
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- GAME ACTION MODAL -->
+    <div class="library-modal" id="gameActionModal" aria-hidden="true">
+        <div class="library-modal-backdrop" id="actionModalBackdrop"></div>
+
+        <div class="library-modal-card action-modal-card" role="dialog"
+            aria-modal="true" aria-labelledby="actionGameTitle">
+
+            <div class="modal-heading">
+                <div>
+                    <span class="section-kicker">GAME DETAILS</span>
+                    <h2 id="actionGameTitle">Game</h2>
+                </div>
+
+                <button class="modal-close" id="closeActionModal"
+                    aria-label="Close">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+
+            <div class="action-game-details" id="actionGameDetails"></div>
+
+            <label class="form-label" for="changeGameStatus">Update status</label>
+            <select id="changeGameStatus">
+                <option value="Backlog">Want to play</option>
+                <option value="Playing">Currently playing</option>
+                <option value="Completed">Completed</option>
+            </select>
+
+            <div class="form-actions action-form-actions">
+                <button type="button" class="remove-game-button" id="removeGameButton">
+                    <ion-icon name="trash-outline"></ion-icon>
+                    Remove
+                </button>
+
+                <button type="button" class="save-game-button" id="saveGameStatus">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="library-toast" id="libraryToast" role="status"></div>
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="My-Games.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monestra — Log In</title>
+
+    <link rel="stylesheet" href="log in.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="log in.js" defer></script>
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="top-header">
+        <a href="../Monestra.html" class="brand">
+            <span class="brand-mark">
+                <img
+                    src="../Pictures/Monestra-logo.png"
+                    alt="Monestra logo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+                <ion-icon name="game-controller" style="display:none"></ion-icon>
+            </span>
+            <span>MONESTRA</span>
+        </a>
+
+        <a href="../Monestra.html" class="back-home">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            <span>Back to home</span>
+        </a>
+    </header>
+
+    <main class="login-layout">
+
+        <!-- LEFT PANEL -->
+        <section class="welcome-panel">
+            <div class="welcome-content">
+
+                <span class="eyebrow">
+                    <span class="status-dot"></span>
+                    WELCOME BACK, PLAYER
+                </span>
+
+                <h1>Your world.<br>Your people.<br><span>Your next move.</span></h1>
+
+                <p>
+                    Pick up where you left off. Your gaming space and
+                    community are waiting for you.
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <ion-icon name="game-controller-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <h3>Back to your games</h3>
+                            <p>Keep your gaming journey moving forward.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <h3>Reconnect with your people</h3>
+                            <p>Get back to the community you enjoy.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <ion-icon name="sparkles-outline"></ion-icon>
+                        </span>
+                        <div>
+                            <h3>Make it your space</h3>
+                            <p>Your profile, your identity, your style.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel-decoration" aria-hidden="true">
+                <div class="decoration-ring ring-one"></div>
+                <div class="decoration-ring ring-two"></div>
+                <ion-icon name="game-controller-outline"></ion-icon>
+            </div>
+
+            <div class="panel-footer">
+                <span>PLAY YOUR WAY.</span>
+                <span>BE PART OF MONESTRA.</span>
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL -->
+        <section class="form-panel">
+            <div class="form-container">
+
+                <div class="mobile-brand">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    MONESTRA
+                </div>
+
+                <div class="form-heading">
+                    <span class="form-tag">YOUR SPACE IS WAITING</span>
+                    <h2>Welcome <span>back.</span></h2>
+                    <p>Enter your account details to continue.</p>
+                </div>
+
+                <form id="loginForm" novalidate>
+
+                    <div class="input-group">
+                        <label for="loginIdentifier">Username or email</label>
+
+                        <div class="input-wrapper">
+                            <ion-icon name="person-outline"></ion-icon>
+
+                            <input
+                                type="text"
+                                id="loginIdentifier"
+                                name="loginIdentifier"
+                                placeholder="Enter your username or email"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+
+                        <small class="field-error" id="identifierError"></small>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="password-label-row">
+                            <label for="loginPassword">Password</label>
+                            <a href="#" id="forgotPassword">Forgot password?</a>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="loginPassword"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="toggle-password"
+                                id="togglePassword"
+                                aria-label="Show password"
+                            >
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </button>
+                        </div>
+
+                        <small class="field-error" id="passwordError"></small>
+                    </div>
+
+                    <label class="remember-row">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="custom-checkbox">
+                            <ion-icon name="checkmark-outline"></ion-icon>
+                        </span>
+                        <span>Remember me on this device</span>
+                    </label>
+
+                    <div
+                        class="form-message"
+                        id="formMessage"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                    <button type="submit" class="submit-button" id="loginButton">
+                        <span>Log in</span>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+
+                </form>
+
+                <div class="form-divider">
+                    <span>NEW TO MONESTRA?</span>
+                </div>
+
+                <p class="signup-prompt">
+                    Don't have an account?
+                    <a href="sign up.html">Create account</a>
+                </p>
+
+                <p class="security-note">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                    Keep your account details private.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="page-footer">
+        <span>© <span id="currentYear"></span> Monestra</span>
+        <span>MADE FOR YOUR WORLD.</span>
+    </footer>
+
+</body>
+</html>

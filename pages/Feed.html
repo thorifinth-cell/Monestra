@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monestra — Feed</title>
+
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+    <link rel="stylesheet" href="../Community/community-box.css">
+    <link rel="stylesheet" href="Feed.css">
+
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="top-navbar">
+
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+            <input type="text" id="searchInput"
+                placeholder="Search..." autocomplete="off">
+        </div>
+
+        <div class="auth-buttons">
+            <button id="loginButton" class="login-button">LOG IN</button>
+            <button id="signupButton" class="signup-button">SIGN UP</button>
+        </div>
+
+        <div class="account-area">
+
+            <button id="notificationButton" class="nav-action"
+                aria-label="Notifications">
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button id="accountButton"
+                class="nav-action profile-button" aria-label="Profile">
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button id="dotsButton" class="nav-action dots-button"
+                aria-label="More">
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+            <div id="dotsMenu" class="dots-menu">
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+                <button class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- FEED -->
+    <main class="feed-page">
+
+        <header class="feed-header">
+            <div>
+                <span class="feed-eyebrow">YOUR COMMUNITY</span>
+                <h1>Feed<span>.</span></h1>
+                <p>Moments, games and people you care about.</p>
+            </div>
+
+            <button class="create-post-button" id="openCreatePost">
+                <ion-icon name="add-outline"></ion-icon>
+                Create post
+            </button>
+        </header>
+
+
+        <!-- STORIES -->
+        <section class="stories-section">
+
+            <div class="section-heading">
+                <h2>Stories</h2>
+                <span>24 hours</span>
+            </div>
+
+            <div class="stories-list">
+
+                <button class="story-item your-story" id="addStory">
+                    <span class="story-ring own-story-ring">
+                        <span class="story-avatar own-avatar">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="story-plus">
+                            <ion-icon name="add-outline"></ion-icon>
+                        </span>
+                    </span>
+                    <span class="story-name">Your story</span>
+                </button>
+
+                <!-- Real stories will appear here after backend integration -->
+
+                <div class="empty-stories" id="emptyStories">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <span>Your community stories will appear here.</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CREATE POST PANEL -->
+        <section class="create-panel" id="createPanel" hidden>
+
+            <div class="panel-heading">
+                <div>
+                    <span class="feed-eyebrow">SHARE SOMETHING</span>
+                    <h2>Create a post</h2>
+                </div>
+
+                <button class="icon-button" id="closeCreatePost"
+                    aria-label="Close">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </div>
+
+            <form id="postForm">
+
+                <textarea id="postText"
+                    placeholder="What's happening in your world?"
+                    maxlength="2000" rows="4"></textarea>
+
+                <div class="selected-images" id="selectedImages"></div>
+
+                <div class="composer-actions">
+
+                    <label class="composer-tool" for="postImages">
+                        <ion-icon name="images-outline"></ion-icon>
+                        Photos
+                    </label>
+
+                    <input id="postImages" type="file"
+                        accept="image/*" multiple hidden>
+
+                    <label class="composer-tool" for="postVideo">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                        Video
+                    </label>
+
+                    <input id="postVideo" type="file"
+                        accept="video/*" hidden>
+
+                    <button type="submit" class="publish-button">
+                        Preview post
+                    </button>
+
+                </div>
+
+                <p class="composer-note">
+                    Preview only. Posts will be saved to your account
+                    when backend integration is added.
+                </p>
+
+            </form>
+
+        </section>
+
+
+        <!-- FEED POSTS -->
+        <section class="posts-section">
+
+            <div class="section-heading">
+                <h2>Recent posts</h2>
+                <span class="posts-count">MONESTRA</span>
+            </div>
+
+            <div id="postsContainer" class="posts-container">
+
+                <div class="empty-feed" id="emptyFeed">
+                    <span class="empty-feed-icon">
+                        <ion-icon name="newspaper-outline"></ion-icon>
+                    </span>
+
+                    <h3>Your feed starts here</h3>
+
+                    <p>
+                        No posts yet. Create a preview post to explore
+                        the layout. Real posts will appear after
+                        backend integration.
+                    </p>
+
+                    <button class="create-post-button secondary-create"
+                        id="emptyCreatePost">
+                        <ion-icon name="add-outline"></ion-icon>
+                        Create your first post
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- STORY FILE PICKER -->
+    <input type="file" id="storyFile"
+        accept="image/*,video/*" hidden>
+
+
+    <!-- COMMUNITY LIQUID GLASS BOX -->
+    <nav class="community-box" aria-label="Community navigation">
+
+        <a href="Feed.html" class="community-box-item active"
+            aria-label="Feed" title="Feed">
+            <ion-icon name="newspaper-outline"></ion-icon>
+        </a>
+
+        <a href="Reels.html" class="community-box-item"
+            aria-label="Reels" title="Reels">
+            <ion-icon name="play-circle-outline"></ion-icon>
+        </a>
+
+        <a href="Messages.html" class="community-box-item"
+            aria-label="Messages" title="Messages">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </a>
+
+        <a href="Servers.html" class="community-box-item"
+            aria-label="Servers" title="Servers">
+            <ion-icon name="server-outline"></ion-icon>
+        </a>
+
+        <a href="Live.html" class="community-box-item live"
+            aria-label="Live" title="Live">
+            <ion-icon name="radio-outline"></ion-icon>
+        </a>
+
+    </nav>
+
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="../Community/community-box.js"></script>
+    <script src="Feed.js"></script>
+
+</body>
+</html>

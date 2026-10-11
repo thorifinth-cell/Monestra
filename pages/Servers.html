@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Servers — Monestra</title>
+
+    <!-- GLOBAL NAVBAR -->
+    <link rel="stylesheet" href="../Navbar/navbar.css">
+
+    <!-- COMMUNITY NAV -->
+    <link rel="stylesheet" href="../Community/community-box.css">
+
+    <!-- SERVERS -->
+    <link rel="stylesheet" href="Servers.css">
+
+    <!-- IONICONS -->
+    <script type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+
+    <script nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TOP NAVBAR
+    ====================================================== -->
+
+    <nav class="top-navbar">
+
+        <div class="navbar-brand">
+            <a href="../Monestra.html">MONESTRA</a>
+        </div>
+
+        <div class="search-box">
+            <ion-icon name="search-outline"></ion-icon>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search..."
+                autocomplete="off"
+            >
+        </div>
+
+        <!-- LOGGED OUT -->
+
+        <div class="auth-buttons">
+
+            <button id="loginButton" class="login-button">
+                LOG IN
+            </button>
+
+            <button id="signupButton" class="signup-button">
+                SIGN UP
+            </button>
+
+        </div>
+
+
+        <!-- LOGGED IN -->
+
+        <div class="account-area">
+
+            <button
+                id="notificationButton"
+                class="nav-action"
+                aria-label="Notifications"
+            >
+                <ion-icon name="notifications-outline"></ion-icon>
+            </button>
+
+            <button
+                id="accountButton"
+                class="nav-action profile-button"
+                aria-label="Profile"
+            >
+                <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button
+                id="dotsButton"
+                class="nav-action dots-button"
+                aria-label="More"
+            >
+                <ion-icon name="ellipsis-vertical"></ion-icon>
+            </button>
+
+
+            <div id="dotsMenu" class="dots-menu">
+
+                <button class="dots-menu-item">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Settings
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="heart-outline"></ion-icon>
+                    Favorites
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                    My Games
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    About
+                </button>
+
+                <button class="dots-menu-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    Contact
+                </button>
+
+                <button
+                    class="dots-menu-item"
+                    onclick="MonestraNavbar.logout()"
+                >
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         DISCORD STYLE SERVER APP
+    ====================================================== -->
+
+    <main class="servers-page">
+
+        <div class="servers-app">
+
+
+            <!-- =================================================
+                 SERVER ICON BAR
+            ================================================== -->
+
+            <aside class="server-rail">
+
+                <button
+                    class="server-rail-item home-server"
+                    title="Servers home"
+                    id="serversHomeButton"
+                >
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                </button>
+
+
+                <div class="server-rail-divider"></div>
+
+
+                <!-- USER SERVERS WILL APPEAR HERE -->
+
+                <div
+                    class="server-list"
+                    id="serverList"
+                >
+
+                    <!-- Empty state -->
+
+                    <div
+                        class="server-empty"
+                        id="serverEmpty"
+                    >
+
+                        <ion-icon name="server-outline"></ion-icon>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADD SERVER -->
+
+                <button
+                    class="server-rail-item add-server"
+                    id="addServerButton"
+                    title="Add a server"
+                >
+                    <ion-icon name="add-outline"></ion-icon>
+                </button>
+
+
+                <!-- EXPLORE -->
+
+                <button
+                    class="server-rail-item explore-server"
+                    id="exploreServerButton"
+                    title="Explore servers"
+                >
+                    <ion-icon name="compass-outline"></ion-icon>
+                </button>
+
+            </aside>
+
+
+            <!-- =================================================
+                 CHANNEL SIDEBAR
+            ================================================== -->
+
+            <aside class="channel-sidebar">
+
+                <header class="server-header">
+
+                    <div class="server-title-area">
+
+                        <span
+                            class="server-status-dot"
+                        ></span>
+
+                        <h1 id="currentServerName">
+                            Monestra Servers
+                        </h1>
+
+                    </div>
+
+                    <button
+                        class="server-header-menu"
+                        id="serverHeaderMenu"
+                        aria-label="Server menu"
+                    >
+                        <ion-icon name="chevron-down-outline"></ion-icon>
+                    </button>
+
+                </header>
+
+
+                <!-- SERVER SEARCH -->
+
+                <div class="server-search">
+
+                    <ion-icon name="search-outline"></ion-icon>
+
+                    <input
+                        type="text"
+                        id="channelSearch"
+                        placeholder="Search channels..."
+                    >
+
+                </div>
+
+
+                <!-- CHANNELS -->
+
+                <div class="channels-container">
+
+
+                    <!-- TEXT -->
+
+                    <div class="channel-category">
+
+                        <button class="category-title">
+
+                            <ion-icon
+                                name="chevron-down-outline"
+                            ></ion-icon>
+
+                            <span>TEXT CHANNELS</span>
+
+                        </button>
+
+
+                        <div class="channel-items">
+
+                            <button
+                                class="channel-item"
+                                data-channel="general"
+                            >
+
+                                <ion-icon name="chatbubble-outline"></ion-icon>
+
+                                <span>general</span>
+
+                            </button>
+
+                            <button
+                                class="channel-item"
+                                data-channel="gaming"
+                            >
+
+                                <ion-icon name="game-controller-outline"></ion-icon>
+
+                                <span>gaming</span>
+
+                            </button>
+
+                            <button
+                                class="channel-item"
+                                data-channel="clips"
+                            >
+
+                                <ion-icon name="videocam-outline"></ion-icon>
+
+                                <span>clips</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- VOICE -->
+
+                    <div class="channel-category">
+
+                        <button class="category-title">
+
+                            <ion-icon
+                                name="chevron-down-outline"
+                            ></ion-icon>
+
+                            <span>VOICE CHANNELS</span>
+
+                        </button>
+
+
+                        <div class="channel-items">
+
+                            <button
+                                class="channel-item voice-channel"
+                            >
+
+                                <ion-icon name="volume-medium-outline"></ion-icon>
+
+                                <span>Lobby</span>
+
+                            </button>
+
+                            <button
+                                class="channel-item voice-channel"
+                            >
+
+                                <ion-icon name="volume-medium-outline"></ion-icon>
+
+                                <span>Gaming Room</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USER AREA -->
+
+                <div class="server-user-area">
+
+                    <div class="current-user-avatar">
+
+                        <ion-icon name="person-outline"></ion-icon>
+
+                        <span class="online-indicator"></span>
+
+                    </div>
+
+                    <div class="current-user-info">
+
+                        <strong id="serverUsername">
+                            Guest
+                        </strong>
+
+                        <span>Online</span>
+
+                    </div>
+
+                    <div class="user-actions">
+
+                        <button title="Mute">
+                            <ion-icon name="mic-outline"></ion-icon>
+                        </button>
+
+                        <button title="Settings">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- =================================================
+                 MAIN CHANNEL
+            ================================================== -->
+
+            <section class="server-main">
+
+
+                <!-- CHANNEL HEADER -->
+
+                <header class="channel-header">
+
+                    <div class="channel-header-title">
+
+                        <ion-icon
+                            name="chatbubble-outline"
+                        ></ion-icon>
+
+                        <strong id="currentChannelName">
+                            general
+                        </strong>
+
+                    </div>
+
+
+                    <div class="channel-header-actions">
+
+                        <button
+                            title="Notifications"
+                            aria-label="Notifications"
+                        >
+                            <ion-icon name="notifications-outline"></ion-icon>
+                        </button>
+
+                        <button
+                            title="Pinned messages"
+                            aria-label="Pinned messages"
+                        >
+                            <ion-icon name="bookmark-outline"></ion-icon>
+                        </button>
+
+                        <button
+                            title="Members"
+                            aria-label="Members"
+                            id="membersButton"
+                        >
+                            <ion-icon name="people-outline"></ion-icon>
+                        </button>
+
+                        <button
+                            title="Search"
+                            aria-label="Search"
+                        >
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+                <!-- CHAT -->
+
+                <div
+                    class="server-chat"
+                    id="serverChat"
+                >
+
+                    <!-- EMPTY SERVER -->
+
+                    <div
+                        class="server-welcome"
+                        id="serverWelcome"
+                    >
+
+                        <div class="server-welcome-icon">
+
+                            <ion-icon
+                                name="chatbubbles-outline"
+                            ></ion-icon>
+
+                        </div>
+
+                        <h2>Welcome to Monestra Servers</h2>
+
+                        <p>
+                            Choose a server and channel to start
+                            chatting with the community.
+                        </p>
+
+                        <span>
+                            Your real servers and messages will appear
+                            after backend integration.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE COMPOSER -->
+
+                <div class="server-composer">
+
+                    <button
+                        class="composer-plus"
+                        title="Add"
+                    >
+                        <ion-icon name="add-circle"></ion-icon>
+                    </button>
+
+                    <input
+                        type="text"
+                        id="serverMessageInput"
+                        placeholder="Message #general"
+                        autocomplete="off"
+                    >
+
+                    <button
+                        class="composer-icon"
+                        title="Gift"
+                    >
+                        <ion-icon name="gift-outline"></ion-icon>
+                    </button>
+
+                    <button
+                        class="composer-icon"
+                        title="GIF"
+                    >
+                        <ion-icon name="images-outline"></ion-icon>
+                    </button>
+
+                    <button
+                        class="composer-icon"
+                        title="Emoji"
+                    >
+                        <ion-icon name="happy-outline"></ion-icon>
+                    </button>
+
+                    <button
+                        class="composer-send"
+                        id="serverSendButton"
+                        title="Send"
+                    >
+                        <ion-icon name="send"></ion-icon>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MEMBERS
+            ================================================== -->
+
+            <aside
+                class="members-panel"
+                id="membersPanel"
+            >
+
+                <div class="members-header">
+
+                    <span>MEMBERS</span>
+
+                    <button id="closeMembers">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+
+                </div>
+
+
+                <div class="members-empty">
+
+                    <div class="members-empty-icon">
+
+                        <ion-icon name="people-outline"></ion-icon>
+
+                    </div>
+
+                    <h3>No members yet</h3>
+
+                    <p>
+                        Members will appear here when
+                        your server is connected to the backend.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         SERVER MODAL
+    ====================================================== -->
+
+    <div
+        class="server-modal"
+        id="serverModal"
+        hidden
+    >
+
+        <div class="server-modal-backdrop"></div>
+
+        <div class="server-modal-card">
+
+            <button
+                class="close-server-modal"
+                id="closeServerModal"
+            >
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-server-icon">
+                <ion-icon name="server-outline"></ion-icon>
+            </div>
+
+            <h2>Create or join a server</h2>
+
+            <p>
+                Build your own gaming community or join
+                an existing server.
+            </p>
+
+            <div class="server-modal-actions">
+
+                <button
+                    id="createServerButton"
+                    class="modal-primary"
+                >
+                    <ion-icon name="add-outline"></ion-icon>
+                    Create a server
+                </button>
+
+                <button
+                    id="joinServerButton"
+                    class="modal-secondary"
+                >
+                    <ion-icon name="enter-outline"></ion-icon>
+                    Join a server
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         COMMUNITY NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="community-box"
+        aria-label="Community navigation"
+    >
+
+        <a
+            href="Feed.html"
+            class="community-box-item"
+            aria-label="Feed"
+            title="Feed"
+        >
+            <ion-icon name="newspaper-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Reels.html"
+            class="community-box-item"
+            aria-label="Reels"
+            title="Reels"
+        >
+            <ion-icon name="play-circle-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Messages.html"
+            class="community-box-item"
+            aria-label="Messages"
+            title="Messages"
+        >
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Servers.html"
+            class="community-box-item active"
+            aria-label="Servers"
+            title="Servers"
+        >
+            <ion-icon name="server-outline"></ion-icon>
+        </a>
+
+        <a
+            href="Live.html"
+            class="community-box-item live"
+            aria-label="Live"
+            title="Live"
+        >
+            <ion-icon name="radio-outline"></ion-icon>
+        </a>
+
+    </nav>
+
+
+    <!-- SCRIPTS -->
+
+    <script src="../Navbar/navbar.js"></script>
+    <script src="../Community/community-box.js"></script>
+    <script src="Servers.js"></script>
+
+</body>
+</html>
